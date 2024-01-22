@@ -1,0 +1,17 @@
+class Solution:
+    def simplifyPath(self, path: str) -> str:
+        old_path = path.split("/")
+        new_path = []
+        for i, c in enumerate(old_path):
+            if c == "":
+                pass
+
+            elif c == "..":
+                if new_path: 
+                    new_path.pop()
+            elif c ==".":
+                pass
+            else:
+                new_path.append(c)
+
+        return "/" + "/".join(new_path)
