@@ -21,3 +21,36 @@ def linked_list_find(head, target):
     current = current.next
   return False
       
+class Node:
+  def __init__(self, val):
+    self.val = val
+    self.next = None
+
+def merge_lists(head_1, head_2):
+  tail = None
+  variable = None
+  if head_1.val > head_2.val:
+    tail = head_2
+    current_2 = head_2.next
+    current_1 = head_1
+    variable = head_2
+  else:
+    tail = head_1
+    current_1 = head_1.next
+    current_2 = head_2
+    variable = head_1
+    
+  while current_2 and current_1:
+    if current_1.val > current_2.val:
+      tail.next = current_2
+      current_2 = current_2.next
+    else:
+      tail.next = current_1
+      current_1 = current_1.next
+    tail = tail.next
+    
+  if current_1:
+    tail.next = current_1
+  elif current_2:
+    tail.next = current_2
+  return variable
