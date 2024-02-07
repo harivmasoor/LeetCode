@@ -86,3 +86,54 @@ def bottom_right_value(root):
   if root:
     dfs(root, max_depth, max_col)
   return result
+
+class Node:
+  def __init__(self, val):
+    self.val = val
+    self.next = None
+
+def add_lists(head_1, head_2):
+  current_1 = head_1
+  current_2 = head_2
+  result = None
+  remainder = 0
+  result_current = None
+  while current_1 and current_2:
+    sum = current_1.val + current_2.val + remainder
+    remainder = 0
+    current_1 = current_1.next
+    current_2 = current_2.next
+    while sum >= 10:
+      sum -= 10
+      remainder += 1
+    new_node = Node(sum)
+    if result:
+      result_current.next = new_node
+      result_current = result_current.next
+    else:
+      result = new_node
+      result_current = result
+  while current_1:
+    sum = current_1.val + remainder
+    remainder = 0
+    while sum >= 10:
+      sum -= 10
+      remainder += 1
+    new_node = Node(sum)
+    result_current.next = new_node
+    result_current = result_current.next
+    current_1 = current_1.next
+  while current_2:
+    sum = current_2.val + remainder
+    remainder = 0
+    while sum >= 10:
+      sum -= 10
+      remainder += 1
+    new_node = Node(sum)
+    result_current.next = new_node
+    result_current = result_current.next
+    current_2 = current_2.next
+  if remainder:
+    remainder_node = Node(remainder)
+    result_current.next = remainder_node
+  return result
