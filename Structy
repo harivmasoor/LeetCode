@@ -137,3 +137,27 @@ def add_lists(head_1, head_2):
     remainder_node = Node(remainder)
     result_current.next = remainder_node
   return result
+
+
+from collections import deque
+def connected_components_count(graph):
+  result = 0
+  visited = set()
+
+  def bfs(node):
+    nonlocal result 
+    nonlocal visited
+    if not node in visited:
+      result += 1
+      queue = deque([node])
+      while queue:
+        current = queue.popleft()
+        visited.add(current)
+        for neighbor in graph[current]:
+          if not neighbor in visited:
+            queue.append(neighbor)
+
+  for node in graph.keys():
+    bfs(node)
+
+  return result
