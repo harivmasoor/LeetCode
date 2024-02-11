@@ -204,3 +204,25 @@ def has_path(graph, src, dst):
 
   return False
 
+from collections import deque
+def largest_component(graph):
+  visited = set()
+  largest = 0
+  def bfs(node):
+    nonlocal visited
+    size = 0
+    if not node in visited:  
+      queue = deque([node])
+      visited.add(node)
+      while queue:
+        current = queue.popleft()
+        size += 1
+        for neighbor in graph[current]:
+          if not neighbor in visited:
+            queue.append(neighbor)
+            visited.add(neighbor)
+    return size
+  for node in graph.keys():
+    resize = bfs(node)
+    largest = max(largest, resize)
+  return largest
