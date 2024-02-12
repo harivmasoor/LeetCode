@@ -226,3 +226,26 @@ def largest_component(graph):
     resize = bfs(node)
     largest = max(largest, resize)
   return largest
+
+# class Node:
+#   def __init__(self, val):
+#     self.val = val
+#     self.left = None
+#     self.right = None
+
+def path_finder(root, target):
+  result = []
+  def dfs(node):
+    nonlocal result
+    if not node:
+      return False
+    if node.val == target:
+      result.append(node.val)
+      return True
+    if dfs(node.left) or dfs(node.right):
+      result.append(node.val)
+      return True
+  dfs(root)
+  if result:
+    return list(reversed(result))
+
