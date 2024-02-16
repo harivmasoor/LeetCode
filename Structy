@@ -249,3 +249,26 @@ def path_finder(root, target):
   if result:
     return list(reversed(result))
 
+from collections import defaultdict, deque
+def shortest_path(edges, node_A, node_B):
+  queue = deque([(node_A, 0)])
+  graph = build_graph(edges)
+  visited = set()
+  while queue:
+    node, dist = queue.popleft()
+    visited.add(node)
+    if node == node_B:
+      return dist
+    for neighbor in graph[node]:
+      if neighbor not in visited:
+        queue.append((neighbor, dist + 1))
+  return -1
+    
+def build_graph(edges):
+  graph = defaultdict(list)
+
+  for edge in edges:
+    node_from, node_to = edge
+    graph[node_from].append(node_to)
+    graph[node_to].append(node_from)
+  return graph
