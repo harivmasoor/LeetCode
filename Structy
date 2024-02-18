@@ -386,3 +386,27 @@ def inbounds(coords, grid):
   if col_i < 0 or col_i > len(grid[0]) - 1:
     return False
   return True
+
+def longest_path(graph):
+  memo = {}
+  res = 0
+  def dfs(node, visited, depth):
+    if node in memo:
+      return memo[node]
+    else:
+      if node in visited:
+        return memo[node]
+      elif graph[node]:
+        visited.add(node)
+        max_depth = 0
+        for neighbor in graph[node]:
+          max_depth = max(max_depth, dfs(neighbor, visited, depth))
+        memo[node] = max_depth + 1
+        return memo[node]
+      else:
+        visited.add(node)
+        memo[node] = depth
+        return depth
+  for root in graph.keys():
+    res = max(res, dfs(root, set(), 0))
+  return res
