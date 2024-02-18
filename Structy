@@ -515,3 +515,25 @@ def inbounds(coords, grid):
   if  0 <= row < len(grid) and 0 <= col < len(grid[0]):
     return True
   return False
+
+def has_cycle(graph):
+  black = set()
+  for node in graph.keys():
+    if dfs(node, graph, black, set()):
+      return True
+  return False
+
+def dfs(node, graph, black, grey):
+  if node in black:
+    return False
+  elif node in grey:
+    return True
+  else:
+    grey.add(node)
+    if graph[node]:
+      for neighbor in graph[node]:
+        if dfs(neighbor, graph, black, grey):
+          return True
+    black.add(node)
+    grey.remove(node)
+    return False
