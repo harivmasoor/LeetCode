@@ -1,0 +1,17 @@
+def tribonacci(n):
+  memo = {}
+  return _tribonacci(n, memo)
+​
+def _tribonacci(n, memo):
+  if n==0 or n==1:
+    return 0
+  if n==2:
+    return 1
+  if not n in memo:
+    memo[n] = _tribonacci(n-1,memo) + _tribonacci(n-2,memo) + _tribonacci(n-3,memo)
+  return memo[n]
+  
+  
+  
+  #0,0,1,1,2,4,7,13
+​
