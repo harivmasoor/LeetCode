@@ -1,4 +1,4 @@
-Write a function, is_prime, that takes in a number as an argument. The function should return a boolean indicating whether or not the given number is prime.
+Write a function, isPrime, that takes in a number as an argument. The function should return a boolean indicating whether or not the given number is prime.
 
 A prime number is a number that is only divisible by two distinct numbers: 1 and itself.
 
@@ -8,52 +8,52 @@ You can assume that the input number is a positive integer.
 
 test_00
 
-is_prime(2) # -> True
+isPrime(2); // -> true
 
 test_01
 
-is_prime(3) # -> True
+isPrime(3); // -> true
 
 test_02
 
-is_prime(4) # -> False
+isPrime(4); // -> false
 
 test_03
 
-is_prime(5) # -> True
+isPrime(5); // -> true
 
 test_04
 
-is_prime(6) # -> False
+isPrime(6); // -> false
 
 test_05
 
-is_prime(7) # -> True
+isPrime(7); // -> true
 
 test_06
 
-is_prime(8) # -> False
+isPrime(8); // -> false
 
 test_07
 
-is_prime(25) # -> False
+isPrime(25); // -> false
 
 test_08
 
-is_prime(31) # -> True
+isPrime(31); // -> true
 
 test_09
 
-is_prime(2017) # -> True
+isPrime(2017); // -> true
 
 test_10
 
-is_prime(2048) # -> False
+isPrime(2048); // -> false
 
 test_11
 
-is_prime(1) # -> False
+isPrime(1); // -> false
 
 test_12
 
-is_prime(713) # -> False
+isPrime(713); // -> false
